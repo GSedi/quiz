@@ -1,0 +1,37 @@
+<app-base>
+  <ng-container body> 
+    <div class="container">
+      <div class="row">
+          <button type="button" class="btn btn-link btn-sm" (click)="navigateBack()">Go Back</button>
+          <span><h2>Task Lists query</h2></span>
+      </div>
+      <br>
+      <div>
+          <div class="form-group">
+              <label >Create post</label>
+              <input type="text" class="form-control"[(ngModel)]="postTitle" placeholder="Enter the title">
+          </div>
+          <div class="form-group">
+            <label >Body</label>
+            <textarea type="text" class="form-control"[(ngModel)]="postBody">
+        </div>
+            <button type="submit" class="btn btn-primary" (click)="createPost()">Create</button>
+      </div>
+      <br>
+      <table class="table"
+          <tr>
+
+            <td>Title</td>
+            <td>created at</td>
+            <td>Like count</td>
+          </tr>
+          <tr *ngFor="let post of posts">
+            <td routerLink="/posts/{{post.id}}/">{{post.title}}</td>
+            <td>{{post.created_at}}</td>
+            <td>{{post.like_count}}</td>
+          </tr>
+      </table>
+      
+    </div>
+    </ng-container>
+</app-base>

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a routerLink="/" class="navbar-brand">Quiz</a> 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="provider.isAuthenticated()">
+        <a routerLink="/posts" class="nav-link">Posts</a> 
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto pull-right">
+      <li class="nav-item" *ngIf="!provider.isAuthenticated()">
+        <a routerLink="/login" class="nav-link">Log In</a> 
+      </li>
+      <li class="nav-item" *ngIf="provider.isAuthenticated()">
+        <a class="nav-link" (click)="logout()">Log Out</a> 
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+          <div class="container col-md-6">
+          <ng-content *ngIf="provider.isAuthenticated()" select="[body]"></ng-content>
+          <ng-content *ngIf="!provider.isAuthenticated()" select="[authforms]"></ng-content>
+          </div>
+      
+  </div>
+</div>
